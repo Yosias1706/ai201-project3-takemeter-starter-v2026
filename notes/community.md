@@ -1,16 +1,15 @@
-# Milestone 1 — Sports Stack Exchange
+# Milestone 1 — A three-way sports conversation classifier
 
-Community: https://sports.stackexchange.com/ — public questions and answers about sports rules, history, tactics and equipment. The dataset uses **answers**, which contain claims and explanations, rather than mixing questions with answers. Reddit denied automated access; Sports Stack Exchange's public API returned complete posts without login.
+Community: [Sports Stack Exchange](https://sports.stackexchange.com/), a public multi-sport discussion community. The unit of text is a complete answer, not a question title.
 
-Read the first 35 answers returned in descending creation order on 2026-10-26 UTC (2026-10-25 Chicago), answer IDs 30391 through 30290. This records the actual reading sample; no claim of a timed 20-minute human reading session is made.
+This restarts the project with a new objective: distinguish **officiating and rules**, **sports facts and explanations**, and **personal takes and recommendations**. The old citation-presence experiment is superseded; its commits remain in history, and its scores are not evidence about this classifier.
 
-Candidate distinctions grounded in that sample:
+The initial reading sample is the first 35 answers in the frozen public API collection (30391 through 30290). Re-reading that sample for conversational purpose shows:
 
-1. Explicit source support versus unsupported explanation: answer 30380 cites baseball Rule 7.03(a)(2); 30390 explains free-kick reasoning without an identifiable citation.
-2. Concrete evidence versus generic advice: answer 30328 gives penalty conversion counts and a BBC source; 30361 gives bat-fitting advice from experience.
-3. Qualified inference versus categorical claims: answer 30363 distinguishes documented medal history from speculation; 30350 states a wicketkeeper rule without identifying its source.
-4. Rules interpretation versus historical examples: answer 30344 applies MCC Law 16.6.1; 30382 identifies Olympic sailing medalists.
+1. Officiating decisions explain what counts as legal: 30391 on forward passes, 30380 on forfeiture, 30344 on when a cricket match ends.
+2. Sports explanations reconstruct what happened or why: 30382 on Olympic medalists, 30331 on speed comparisons, 30328 on penalty conversion rates.
+3. Personal recommendations and conjecture make a different kind of contribution: 30361 recommends how to choose a cricket bat; 30360 offers solo practice drills; 30326 speculates about a ranking-list error.
 
-Selection: distinguish source-supported from uncited claims. The community has few pure emotional reactions, so imposing analysis/hot_take/reaction would create a tiny reaction class. Two labels fit the observed material better. The classifier measures visible support, not truth or overall quality.
+A broader scan reveals more personal takes: 30214 attributes a player's shooting decline to reduced possession; 30088 predicts singles players will dominate doubles specialists; 29949 assesses someone's chances of a basketball career; 29938 jokes about duct tape for hockey sticks.
 
-The API supplies author attribution, permanent answer IDs and content licenses; preserve these beside the dataset. Keep whole answer bodies and links, with HTML converted to readable text. Do not use votes or accepted-answer status as input features.
+The original sample has useful real variation for these three categories. Retain the 200 complete answer bodies and their attribution, but re-annotate every answer from scratch under the new definitions. Citation presence, popularity and answer acceptance are not label rules. Reddit direct access and an alternate public archive were unavailable, so the public Sports Stack Exchange collection remains the usable sports source.
