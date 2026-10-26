@@ -1,0 +1,20 @@
+# Sports Stack Exchange source snapshots
+
+Collected 2026-10-26 UTC through the public Stack Exchange API:
+
+- https://api.stackexchange.com/2.3/answers?site=sports&pagesize=100&page=1&order=desc&sort=creation&filter=withbody
+- https://api.stackexchange.com/2.3/answers?site=sports&pagesize=100&page=2&order=desc&sort=creation&filter=withbody
+
+The snapshots contain the 200 returned answer objects, including complete HTML, author, creation time, question ID, and content license. No answers were removed, shortened, or fabricated. This is a convenience sample ordered by creation time, not a representative random sample of all sports discussion. Later edits may appear in old answers.
+
+[../sources.csv](../sources.csv) supplies row-level attribution and permanent post links. Original contributions retain their authors' CC BY-SA licenses (recorded per row). HTML-to-text formatting is an adaptation: complete prose, quotations, tables, link destinations, image descriptions/URLs and embedded video URLs are retained. Image pixels and video contents are not model inputs. Attribution metadata is not included in training text. Dataset adaptations are shared under CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/.
+
+[annotations.json](annotations.json) records the selected label and rationale for each answer. Initial assignments were reviewed against the full text and original HTML, including hyperlink destinations. Link presence alone is insufficient: named rules can qualify without links, and template images can be irrelevant to the distinction. No rows are marked `cold`.
+
+Rebuild from the repository root:
+
+```sh
+.venv/bin/python scripts/build_dataset.py
+```
+
+The script does not fetch mutable live data or infer labels. It rebuilds the single unsplit dataset from these frozen inputs and checks for blank or duplicate text and the 70% cap. The notebook alone performs the train/validation/test split.

@@ -1,0 +1,802 @@
+{
+  "29794": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29799": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29801": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29803": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29810": {
+    "label": "sourced",
+    "reason": "Motorcycle museum records and Tour de France speed report support the listed figures."
+  },
+  "29812": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29817": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29822": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29825": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29829": {
+    "label": "sourced",
+    "reason": "Named OOTP historical stadium collection and Ballpark Digest support resource claims."
+  },
+  "29833": {
+    "label": "sourced",
+    "reason": "Names Flashscores as input and gives dated match-level results from the database."
+  },
+  "29835": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29836": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29840": {
+    "label": "sourced",
+    "reason": "Relevant linked reference supports a substantive claim; retained after reviewing original HTML links."
+  },
+  "29843": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29845": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29853": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29855": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29857": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29860": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29861": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29863": {
+    "label": "sourced",
+    "reason": "Relevant linked reference supports a substantive claim; retained after reviewing original HTML links."
+  },
+  "29866": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29867": {
+    "label": "uncited",
+    "reason": "Detailed historical statistics are provided without identifying their source."
+  },
+  "29869": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29870": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29871": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29873": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29876": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29879": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29880": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29882": {
+    "label": "uncited",
+    "reason": "Image templates are recommended resources, not attributed support for a substantive sports claim."
+  },
+  "29883": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29887": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29888": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29895": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29897": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29898": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29900": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29903": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29909": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29911": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29918": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29923": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29925": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29926": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29927": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29935": {
+    "label": "uncited",
+    "reason": "Detailed historical statistics are provided without identifying their source."
+  },
+  "29937": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29938": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29941": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29944": {
+    "label": "uncited",
+    "reason": "Refers to an unidentified page; no identifiable source in this answer."
+  },
+  "29946": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29948": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29949": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29955": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29958": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29961": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29964": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29969": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29973": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "29983": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29984": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "29987": {
+    "label": "uncited",
+    "reason": "Law 21.6 occurs in the quoted question; the answer itself does not use it to support its correction."
+  },
+  "29988": {
+    "label": "uncited",
+    "reason": "Unattributed technique illustration alone is not an external citation."
+  },
+  "29989": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30007": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30009": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30015": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30016": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30031": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30032": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30040": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30041": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30043": {
+    "label": "uncited",
+    "reason": "Names a match and score but no source supporting them."
+  },
+  "30046": {
+    "label": "sourced",
+    "reason": "Specific numbered baseball provision and quoted text."
+  },
+  "30047": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30049": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30052": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30054": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30057": {
+    "label": "sourced",
+    "reason": "Explicitly attributes the account to Khelif’s Wikipedia article."
+  },
+  "30059": {
+    "label": "uncited",
+    "reason": "Discusses organizations and rules but supplies no identifiable document or report."
+  },
+  "30062": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30063": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30064": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30065": {
+    "label": "sourced",
+    "reason": "Identifies ICC T20I regulations section 1.2.7."
+  },
+  "30070": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30073": {
+    "label": "sourced",
+    "reason": "Names documentary The Day and provides embedded footage."
+  },
+  "30075": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30076": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30083": {
+    "label": "sourced",
+    "reason": "Relevant linked reference supports a substantive claim; retained after reviewing original HTML links."
+  },
+  "30085": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30088": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30091": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30103": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30105": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30106": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30107": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30109": {
+    "label": "sourced",
+    "reason": "Names Stathead and Pro Football Reference as the sources searched for the play."
+  },
+  "30111": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30119": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30122": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30123": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30126": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30135": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30136": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30138": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30141": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30146": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30147": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30149": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30150": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30159": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30161": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30168": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30171": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30173": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30174": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30176": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30179": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30181": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30183": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30188": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30191": {
+    "label": "sourced",
+    "reason": "Relevant linked reference supports a substantive claim; retained after reviewing original HTML links."
+  },
+  "30193": {
+    "label": "sourced",
+    "reason": "Relevant linked reference supports a substantive claim; retained after reviewing original HTML links."
+  },
+  "30195": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30198": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30200": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30201": {
+    "label": "uncited",
+    "reason": "Quotes a rule without identifying its book or provision."
+  },
+  "30205": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30206": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30208": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30209": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30211": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30214": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30216": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30220": {
+    "label": "sourced",
+    "reason": "Names Cricket Law 29; this label does not verify the interpretation."
+  },
+  "30226": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30233": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30235": {
+    "label": "sourced",
+    "reason": "Relevant linked reference supports a substantive claim; retained after reviewing original HTML links."
+  },
+  "30239": {
+    "label": "sourced",
+    "reason": "Identifies a dated Deseret News quotation and video timestamp."
+  },
+  "30241": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30242": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30245": {
+    "label": "sourced",
+    "reason": "Relevant linked reference supports a substantive claim; retained after reviewing original HTML links."
+  },
+  "30246": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30247": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30249": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30251": {
+    "label": "sourced",
+    "reason": "Names NBA.com All-Time Leaders statistics and a date."
+  },
+  "30256": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30259": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30262": {
+    "label": "sourced",
+    "reason": "Specific rule 7-6.8.e and quotation identify support."
+  },
+  "30264": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30265": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30267": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30268": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30269": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30271": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30272": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30273": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30275": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30277": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30280": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30281": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30285": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30287": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30290": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30291": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30296": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30297": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30303": {
+    "label": "sourced",
+    "reason": "Attributes the positional definition to the IFAB glossary."
+  },
+  "30305": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30310": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30315": {
+    "label": "uncited",
+    "reason": "Season and contract assertions are detailed but no source is identified."
+  },
+  "30318": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30321": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30326": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30328": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30330": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30331": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30332": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30334": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30342": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30344": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30345": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30348": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30350": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30352": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30354": {
+    "label": "uncited",
+    "reason": "Speed and year are specific but no source is identified."
+  },
+  "30360": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30361": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30363": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30364": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30365": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30366": {
+    "label": "sourced",
+    "reason": "BWF Laws of Badminton is a named document with attributed dimensions."
+  },
+  "30374": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30376": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30380": {
+    "label": "sourced",
+    "reason": "Specific Rule 7.03(a)(2) and quotation support the conclusion despite no hyperlink."
+  },
+  "30382": {
+    "label": "sourced",
+    "reason": "Identifiable source or specific rule supports a substantive claim."
+  },
+  "30390": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  },
+  "30391": {
+    "label": "uncited",
+    "reason": "No identifiable external source supports the answer’s substantive claims."
+  }
+}
