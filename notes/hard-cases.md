@@ -1,7 +1,9 @@
-# Three annotation decisions
+# Three-class annotation decisions
 
-1. **30354 — speed and year without a source.** Could be sourced because it supplies a concrete 160 kmph claim and a 2002 match, or uncited because no source is identified. Chosen: **uncited**. A checkable fact is not itself an attribution.
-2. **30380 — rule citation without a hyperlink.** Could be uncited if only URLs counted, or sourced because Rule 7.03(a)(2) is identified and quoted. Chosen: **sourced**. A specific rule provision counts even when the conclusion remains qualified.
-3. **30245 — sourced facts mixed with speculation.** Could be uncited because the second half speculates about skating physics, or sourced because the first half links a reference on jump types. Chosen: **sourced**. One substantive supported claim suffices; the label does not certify every sentence.
+1. **30360 — goalball practice.** Could be game_analysis because an athlete's real routine is quoted, or fan_take because it recommends a training approach. Chosen: **fan_take**. The conclusion tells the reader how to practise; sourcing does not determine the label.
+2. **30183 — impossible cricket situation.** Could be fan_take because it opens with a complaint that the question is unproductive, or rulebook because it applies the wicket-breaking law. Chosen: **rulebook**. The operative conclusion decides not out under Law 29, outweighing the aside.
+3. **30149 — swinging-gate formation.** Could be fan_take because the author says the formation is low-risk, or game_analysis because it explains the tactical sequence. Chosen: **game_analysis**. Its main purpose is explaining the formation and defensive response, not instructing the reader to adopt it.
 
-Additional checks: 29987 quotes a rule number only in the question it repeats and does not use that provision to substantiate its correction; uncited. 29935 and 29867 provide many historical figures but no cited source; uncited. 29882 recommends image templates without attributing a substantive sports explanation; uncited. Embedded, identifiable documentary footage in 30073 does count as a source.
+Further boundary checks: 30214 is a personal hypothesis about shooting decline (fan_take); 30328 compares actual penalty results and explains a tactical mechanism (game_analysis). 29840 reconstructs an actual two-yellow-card incident (game_analysis), whereas 29909 determines when a second caution is issued under the rules (rulebook). 29794 uses numeric examples but primarily argues a statistic is absurd (fan_take). 30354 is a factual event assertion (game_analysis) even without a citation.
+
+Every answer was assigned a new label based on its main purpose. The old sourced/uncited assignments were not mapped to the new labels. The 200 original answer bodies and their attribution are unchanged.
