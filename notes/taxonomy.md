@@ -1,40 +1,48 @@
-# Milestone 2 — Taxonomy
+# Milestone 2 — Rulebook, Game Analysis, Fan Take
 
-## sourced
-Supports at least one substantive sports claim with an identifiable external source: a relevant link, named publication or dataset, attributed quotation, or specific rule reference.
+This three-label taxonomy supersedes the citation-based taxonomy. Citations and tone do not determine the label. A sourced opinion can be a fan take; an uncited factual report can be game analysis.
 
-Examples from the initial reading:
-- [Answer 30382](https://sports.stackexchange.com/a/30382): the complete answer identifies William Eastman Buchan and William Carl Buchan as 1984 sailing gold medalists and links the Olympic results.
-- [Answer 30380](https://sports.stackexchange.com/a/30380): the complete answer applies baseball Rule 7.03(a)(2), quotes it, and distinguishes that rule from the author's judgment about forfeiture. A numbered rule is a citation even without a hyperlink.
+## rulebook
 
-## uncited
-Offers sports claims, explanations, opinions or advice without an identifiable external source supporting a substantive claim.
+**Definition:** The main point explains or applies a sports rule, officiating decision, eligibility requirement, scoring convention, or competition procedure.
 
-Examples from the initial reading:
-- [Answer 30361](https://sports.stackexchange.com/a/30361): the complete answer recommends bat length near the hip and prioritizes balance and weight, without attributing that advice to a source.
-- [Answer 30354](https://sports.stackexchange.com/a/30354): “He did actually hit the 160 kmph mark vs New Zealand in an ODI in 2002 at Pakistan.” This is a concrete claim but no evidence is cited.
+Two real examples: [30350](https://sports.stackexchange.com/a/30350) explains when a wicketkeeper's position causes a no-ball; [30173](https://sports.stackexchange.com/a/30173) explains when a pool player gets another shot. Full examples appear in the README.
 
-Full, unchanged wording and original HTML for these examples are preserved in the source snapshots; the final README includes two full text examples per label.
+## game_analysis
 
-## Hardest boundary and decision rule
+**Definition:** The main point reports or explains sports events, records, tactics, equipment, or performance through concrete observations, examples, or mechanisms, without primarily prescribing a rule or personal recommendation.
 
-The boundary is a concrete, checkable claim versus a claim accompanied by a source. A date, number, athlete's name or confident tone alone is **not** a citation. For example, 30354 is uncited even though it gives a speed and year. Conversely, 30380 is sourced even though it has no hyperlink and qualifies its conclusion.
+Two real examples: [30382](https://sports.stackexchange.com/a/30382) identifies Olympic sailing gold medalists; [30354](https://sports.stackexchange.com/a/30354) reports a bowling speed in a specified match. A short factual answer still qualifies, and the label does not verify its truth.
 
-Apply the labels to the whole answer: one substantive supported claim suffices, even if other sentences are speculative. A specific numbered rule or a named document plus attributable content counts; generic “the rules say,” unnamed coaches and personal experience do not. A link must support a substantive assertion, rather than merely advertise a resource. A quote of the question alone does not count. An externally identified video or document can count, but an unattributed illustration alone does not. Labels record visible attribution, not source reliability or factual truth. Do not fact-correct or rewrite posts.
+## fan_take
 
-## Eight synthetic stress tests (excluded from training)
+**Definition:** The main point is a personal judgment, prediction, recommendation, anecdote, joke, or speculative explanation rather than a rule decision or concrete factual account.
 
-| Boundary example | Label | Reason |
+Two real examples: [30361](https://sports.stackexchange.com/a/30361) recommends bat fitting based on feel; [29927](https://sports.stackexchange.com/a/29927) recommends athletic tape as an alternative to hockey tape.
+
+## Decision order and hardest boundary
+
+Read the whole answer and identify the conclusion it is trying to deliver. First, if that conclusion decides what is permitted, awarded, penalized, eligible or officially counted, choose **rulebook**. A heated disagreement with a referee can still be rulebook. Mentioning a rule in passing is not enough.
+
+Otherwise, if the conclusion mainly recommends an action, evaluates someone, forecasts an outcome, recounts personal experience, jokes, or proposes an unestablished explanation, choose **fan_take**. A citation does not automatically turn advice into analysis. An opinionated aside does not override an otherwise factual answer.
+
+Otherwise choose **game_analysis** for a concrete account, record, comparison, mechanism or tactical explanation. An unsupported factual assertion remains game_analysis when its purpose is reporting what happened; support and correctness are separate questions.
+
+The hardest boundary is **game_analysis vs fan_take**. A reasoned personal recommendation is still fan_take, while an explanation of how a tactic works is game_analysis. Example 30360 quotes a goalball athlete's training routine and ends by recommending how to practise alone: **fan_take**, despite its quotation and link. Example 30149 explains the swinging-gate formation's purpose and the defense's response: **game_analysis**, without primarily telling the reader what to do.
+
+## Eight synthetic boundary tests — excluded from training
+
+| Example | Label | Decision |
 |---|---|---|
-| He scored 40 last night, so he is the best. | uncited | Number without source. |
-| ESPN's game recap reports 40 points; I still think he played badly. | sourced | Named report despite opinion. |
-| Law 11.2 says involvement matters; this was not offside. | sourced | Specific rule reference. |
-| The rules say that is offside. | uncited | No identifiable provision. |
-| My coach says lighter bats are always better. | uncited | Unidentified anecdotal authority. |
-| The BWF Laws of Badminton limit racket length to 680 mm. | sourced | Named document with attributed content. |
-| Visit my shop for the best bat; heavy bats are superior. | uncited | Promotional link would not support the claim. |
-| The article documents one injury; I suspect the rule was introduced for safety. | uncited | Unidentified article; speculation alone cannot supply a citation. |
+| That ref is awful, but Law 11 makes this player offside when the pass is played. | rulebook | Main conclusion is legality, despite emotion. |
+| The league should abolish offside; it ruins the fun. | fan_take | Advocates changing a rule rather than applying it. |
+| They made 15 of 26 stutter penalties, compared with 24 of 35 conventional ones. | game_analysis | Reports a concrete comparison. |
+| They will never win another title with this coach. | fan_take | Forecast, not an event report. |
+| Choose the lighter bat if it feels balanced during practice swings. | fan_take | Actionable personal recommendation. |
+| Spin changes ball flight because seams alter airflow. | game_analysis | Explains a mechanism, without prescribing a purchase or drill. |
+| The maximum legal racket length is 680 mm. | rulebook | Equipment regulation, not performance analysis. |
+| His racket weighs 85 g and its flexible shaft changes the feel of his shots. | game_analysis | Equipment description, not eligibility or advice. |
 
-## Strongest case on each side of the borderline example
+## Competing cases for the difficult example
 
-For calling 30354 sourced: the speed, opponent, format, year and country make its claim independently searchable. For calling it uncited: searchability is not attribution; the post gives no record or report from which the claim was obtained. The final decision rule chooses uncited. This separates visible evidence from an annotator's ability to reconstruct evidence later.
+30360 could be game_analysis because it documents an actual athlete's routine. It could be fan_take because the quoted routine is offered as a recommendation and the conclusion tells the reader how to practise. The decision rule gives the answer's main purpose priority over its evidence format. This rule is fixed before the full annotation pass and before three-class training.

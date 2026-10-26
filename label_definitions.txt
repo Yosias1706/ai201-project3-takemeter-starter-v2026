@@ -1,2 +1,3 @@
-sourced: Supports at least one substantive sports claim with an identifiable external source: a relevant link, named publication or dataset, attributed quotation, or specific rule reference.
-uncited: Offers sports claims, explanations, opinions or advice without an identifiable external source supporting a substantive claim.
+rulebook: The main point explains or applies a sports rule, officiating decision, eligibility requirement, scoring convention, or competition procedure.
+game_analysis: The main point reports or explains sports events, records, tactics, equipment, or performance through concrete observations, examples, or mechanisms, without primarily prescribing a rule or personal recommendation.
+fan_take: The main point is a personal judgment, prediction, recommendation, anecdote, joke, or speculative explanation rather than a rule decision or concrete factual account.
