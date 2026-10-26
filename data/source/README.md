@@ -11,10 +11,4 @@ The snapshots contain the 200 returned answer objects, including complete HTML, 
 
 [annotations.json](annotations.json) records the selected label and rationale for each answer. Initial assignments were reviewed against the full text and original HTML, including hyperlink destinations. Link presence alone is insufficient: named rules can qualify without links, and template images can be irrelevant to the distinction. No rows are marked `cold`.
 
-Rebuild from the repository root:
-
-```sh
-.venv/bin/python scripts/build_dataset.py
-```
-
-The script does not fetch mutable live data or infer labels. It rebuilds the single unsplit dataset from these frozen inputs and checks for blank or duplicate text and the 70% cap. The notebook alone performs the train/validation/test split.
+The committed CSV is the canonical unsplit input. Local rebuilding helpers are optional and excluded from version control. The source snapshots and annotation records preserve the full inputs for independent reconstruction. The notebook alone performs the train/validation/test split.

@@ -1,396 +1,108 @@
-# TakeMeter
-
-> ### 👋 Start here
->
-> **New to this repo? Read [RUNNING.md](RUNNING.md) first** — setup, the
-> notebook, the baseline, and what to do when something breaks.
->
-> Once `python test.py` passes:
->
-> ```bash
-> head -5 data/practice_labels.csv     # the shape your labels.csv needs
-> ```
->
-> Then open `takemeter.ipynb` **in this folder** — in VS Code, or with
-> `jupyter notebook` if you prefer. Pick the kernel: the `.venv` inside this
-> project. Run section 1, which reports the hardware you'll be training on.
-> Everything else waits until you have data.
->
-> Nothing to upload, nothing to connect, no accounts and no keys. The notebook
-> runs on your machine and writes next to your code.
->
-> **The rest of this file is your submission.** Fill it in as you go.
-
----
-
-<!-- ─────────────────────────────────────────────────────────────────────────
-     HOW TO USE THIS FILE
-
-     Unit 5 asks for the first five sections. Unit 6 adds the five below them.
-
-     Everything is pasted as TEXT. No screenshots, no images.
-
-     ⚠️ The confusion matrix especially. The notebook prints one as a markdown
-     table, ready to copy. A screenshot of a matrix earns nothing. Paste the
-     table.
-     ───────────────────────────────────────────────────────────────────────── -->
-
-<!-- ═══════════════════════ UNIT 5 — THE BUILD ═══════════════════════ -->
+# TakeMeter — Sports answers and visible evidence
 
 ## What This Does
 
-<!-- Your community, and what your classifier sorts posts into. Three or four
-     sentences. -->
+This project classifies complete answers from [Sports Stack Exchange](https://sports.stackexchange.com/) into **sourced** and **uncited**. It distinguishes visible attribution from explanations or opinions that supply no identifiable supporting source. It does not decide whether an answer is true, whether the cited source is reliable, or whether a post is good overall. The community covers many sports, including football, cricket, baseball, basketball and tennis.
 
-
-
----
+[Community reading notes](notes/community.md) record the initial 35-answer sample and candidate distinctions. [Acceptance criteria](criteria.md) were committed before training on this dataset. The repository for both units is [Yosias1706/ai201-project3-takemeter-starter-v2026](https://github.com/Yosias1706/ai201-project3-takemeter-starter-v2026).
 
 ## Label Taxonomy
 
-<!-- Each label: a one-sentence definition and two real examples from your
-     reading. Then your decision rule for the hardest boundary.
+### sourced
 
-     The decision rule is worth a point on its own and it's the thing most
-     people leave out. Every taxonomy has a hardest boundary. Name yours. -->
+**Definition:** Supports at least one substantive sports claim with an identifiable external source: a relevant link, named publication or dataset, attributed quotation, or specific rule reference.
 
-### `label_one`
+**Example 1 — Olympic sailing results**
 
-**Definition:**
+> William Eastman Buchan (Star class) and William Carl Buchan (Flying Dutchman class) both won gold medals in separate sailing events in the 1984 Olympics (https://en.wikipedia.org/wiki/Sailing_at_the_1984_Summer_Olympics#Medal_summary).
 
-**Example 1:**
->
+— [user37911](https://sports.stackexchange.com/users/37911/user37911), [answer 30382](https://sports.stackexchange.com/a/30382), CC BY-SA 4.0.
 
-**Example 2:**
->
+**Example 2 — baseball forfeiture**
 
-### `label_two`
+> The defending team, by refusing to tag the runner, would probably forfeit the game to the batting team under Rule 7.03(a)(2):
+> 
+> A game may be forfeited to the opposing team when a team ... [e]mploys tactics palpably designed to delay or shorten the game.
+> 
+> Here, the game is delayed by not taking the obvious step of tagging the runner out.
+> 
+> I don't know if there is any provision for both teams forfeiting, but I think it would be a judgment call by the umpire to determine which team is most guilty of delay. It is much easier for the defense to put out a runner that refuses to take their base than for a runner to perpetually avoid being tagged by an active defense.
 
-**Definition:**
+— [chepner](https://sports.stackexchange.com/users/11180/chepner), [answer 30380](https://sports.stackexchange.com/a/30380), CC BY-SA 4.0.
 
-**Example 1:**
->
+### uncited
 
-**Example 2:**
->
+**Definition:** Offers sports claims, explanations, opinions or advice without an identifiable external source supporting a substantive claim.
+
+**Example 1 — choosing a cricket bat**
+
+> The best is to stand it up next to you, the top of the handle should be around your hip/waist. Or hang it down straight by your side and keep your arm relaxed. The toe should just about touch the ground. But height is secondary, weight matters more imo - grab a few and take some shadow shots, go with whatever feels balanced and not too toe-heavy. Kids are usually fit by bat number (0-6) and adults are fit SH or LH based on height.
+
+— [Abhi raj](https://sports.stackexchange.com/users/37581/abhi-raj), [answer 30361](https://sports.stackexchange.com/a/30361), CC BY-SA 4.0.
+
+**Example 2 — bowling speed**
+
+> He did actually hit the 160 kmph mark vs New Zealand in an ODI in 2002 at Pakistan.
+
+— [Guest](https://sports.stackexchange.com/users/37579/guest), [answer 30354](https://sports.stackexchange.com/a/30354), CC BY-SA 4.0.
 
 ### The hardest boundary
 
-**Which two labels:**
+The hardest boundary is a concrete fact versus an attributed fact. A speed, date, score or athlete's name is not by itself a source. The bowling-speed example remains **uncited**, while the forfeiture example is **sourced** because it quotes Rule 7.03(a)(2), even without a URL.
 
-**The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
-
-
-
----
+Apply the rule to the whole answer: one substantive supported claim suffices even when another paragraph speculates. A named document with attributed content or a specific rule provision counts. Generic references to “the rules,” personal experience, unidentified coaches, quotations of the question alone, promotional links and unattributed illustrations do not. An identified documentary or linked report can count. Labels describe attribution, not correctness. [Taxonomy notes](notes/taxonomy.md) contain eight synthetic boundary tests, excluded from the dataset, and the competing interpretations of the bowling-speed example.
 
 ## The Dataset
 
-<!-- Where you collected from, how you labelled, your counts, and three hard
-     cases. -->
+**Source:** 200 public answers returned by the Sports Stack Exchange API in descending creation order, two pages of 100, collected on October 26, 2026 UTC. No login was required. These are whole answers, not excerpts, question titles, or generated posts. This is a convenience sample, not a representative sample of all sports fans or all sports posts.
 
-**Where the posts came from:**
-
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
-
-**Counts per label:**
+**Preparation:** Collected first, assigned the two labels, then checked the full answer and its original HTML against the decision rule. The review corrected cases where a link was hidden behind ordinary words and cases where detailed statistics had no source. Each row's note contains its answer ID and a decision rationale. No row is marked as an unaided `cold` annotation. The dataset is kept as one unsplit [labels.csv](labels.csv); the notebook alone creates the splits.
 
 | Label | Count | Share |
-|---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+|---|---:|---:|
+| sourced | 125 | 62.5% |
+| uncited | 75 | 37.5% |
+| **Total** | **200** | **100%** |
+
+There are zero empty texts and zero exact duplicate texts. The larger label remains below the 70% limit. Original HTML, author attribution, timestamps and content licenses are retained in [source snapshots](data/source/); [sources.csv](data/sources.csv) maps every row to its public answer. HTML was converted to text without trimming prose: links, tables, quotations, image descriptions and embedded-media URLs remain. Image pixels and video frames are not model inputs. Text and dataset adaptations retain CC BY-SA attribution; see [source documentation](data/source/README.md).
 
 **Three hard cases**
 
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
+1. [Answer 30354](https://sports.stackexchange.com/a/30354) gives a specific 160 kmph claim, opponent and year. It could look sourced because it is checkable, but the chosen label is **uncited** because it identifies no report or record.
+2. [Answer 30380](https://sports.stackexchange.com/a/30380) has no hyperlink and hedges its conclusion. The chosen label is **sourced** because the numbered, quoted baseball rule is identifiable support.
+3. [Answer 30245](https://sports.stackexchange.com/a/30245) cites jump types in its first paragraph and speculates about physics later. The chosen label is **sourced** because at least one substantive claim is supported; the label does not certify all sentences.
 
-**1.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
-
-**2.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
-
-**3.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
-
----
+**Limitations:** Some answers share a question and may repeat rules or events. Exact deduplication does not remove this topical dependence; the supplied row-level split is not a question-group holdout. Long posts remain complete in the CSV, but the model reads only their first 128 tokens, so late citations may be invisible. A URL detector would be a useful additional diagnostic, although numbered rules without links and irrelevant links mean it would not exactly implement this taxonomy.
 
 ## The Training Run
 
-<!-- Your starting model, your settings, and anything you changed and why. -->
+**Starting model:** `distilbert-base-uncased`, with a new two-class classification head.
 
-**Base model:**
+| Setting | Value |
+|---|---|
+| Epochs | 3 |
+| Learning rate | 0.00002 |
+| Batch size | 16 |
+| Maximum tokens | 128 |
+| Seed | 42 |
+| Hardware | Apple Silicon GPU, MPS |
+| Python | 3.13.0 |
+| PyTorch | 2.14.1 |
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+No training hyperparameters were changed from the starter defaults. The label map and input path were changed to this project's two labels and `labels.csv`. The earlier notebook execution used the starter's fictional practice dataset; the committed results here come from the real sports dataset.
 
-**Anything I changed from the defaults, and why:**
+| Label | Train | Validation | Test |
+|---|---:|---:|---:|
+| sourced | 87 | 19 | 19 |
+| uncited | 52 | 12 | 11 |
+| **Total** | **139** | **31** | **30** |
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+The supplied 70/15/15 splitting code produces 139/31/30 because of rounding in the second split. Neither class has fewer than eight test examples. The environment check passed all ten checks, and notebook sections 1–5 completed successfully. [results.json](results.json) stores metrics, confidence summaries and device information; [test_split.csv](test_split.csv) stores the exact held-out rows for Unit 6. Both were committed after the dataset and criteria. The training run did not save a standalone model checkpoint; rerun the notebook to recreate the trained model in memory.
 
+The run is recorded as obtained, without selecting a better seed or changing targets after seeing scores. Assessment against the criteria, three-seed comparison and baseline experiments belong to Unit 6; notebook sections 6–7 have not been run. Hardware can affect reproducibility even with the same seed.
 
+## Reproducing the Project
 
----
+Follow [RUNNING.md](RUNNING.md) to install the pinned requirements in `.venv`, run `python test.py`, select that environment as the notebook kernel, then run sections 1–5 of [takemeter.ipynb](takemeter.ipynb) in order. The committed CSV and notebook are sufficient; local collection/execution helpers are not required. The source snapshots and per-answer annotation records preserve the provenance needed to audit the data.
 
-## How I Used AI
-
-<!-- Two specific moments — what you asked, what came back, what you changed.
-
-     ⚠️ Plus disclosure of any pre-labelling. If you had a model pre-label a
-     batch and then read and corrected every one, say that. It's an allowed
-     workflow and disclosing it costs you nothing. Not disclosing it is the
-     problem. -->
-
-**Moment 1**
-
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
-
-**Moment 2**
-
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
-
-**Pre-labelling disclosure:**
-
-<!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
-
-     Don't fill these in during unit 5.
-     ═══════════════════════════════════════════════════════════════════ -->
-
----
-
-## Baseline vs. Trained
-
-<!-- Both models on the same posts. `python baseline.py --trained results.json`
-     prints this table for you. -->
-
-| Measure | Baseline | Trained | Difference |
-|---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
-
-**What I predicted before I looked:**
-<!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
-     prediction made afterwards isn't one. -->
-
-**What the gap actually means:**
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
-
-
-
----
-
-## Run Log — Before
-
-<!-- Five criteria across three seeds. The notebook's section 6 prints the
-     spread table; the Target and Verdict columns are yours. -->
-
-| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
-
-### Confusion matrix
-
-<!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
-     An image of a matrix earns nothing. -->
-
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
-
-**My biggest off-diagonal number, and what it means:**
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
-
-
-
----
-
-## Verdicts and Diagnoses
-
-<!-- MET or MISSED against LAST UNIT's target. The target has to hold across
-     all three seeds, not turn up sometimes. -->
-
-| # | Criterion | Target | Verdict | How I decided |
-|---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
-
-**Diagnoses**
-
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
-
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
-
-
-
----
-
-## Agreement Report
-
-<!-- Your rate against the staff set, and every disagreement adjudicated.
-
-     Remember you labelled these 30 under the STAFF taxonomy in
-     data/staff_taxonomy.md, not your own — so every argument below is made
-     from those definitions and those decision rules. -->
-
-**Agreement rate:** ___ / 30 = ___%
-
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
-
-**Disagreements**
-
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
-
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
-
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
-
-**1.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**2.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**What the pattern in my disagreements tells me:**
-
-
-
----
-
-## The Improvement
-
-**What I changed:**
-
-**Which diagnosis pointed at it:**
-
-### Run Log — After
-
-| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
-
-**Did it help, and how do I know:**
-
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
-
-
-
----
-
-## What's Still Broken
-
-<!-- For each criterion still missed: what you'd do, and why you stopped. -->
-
-
-
-**The gap between what I meant my labels to capture and what the model
-learned:**
-<!-- Two sentences. Your confusion matrix is the evidence. -->
-
-
-
-<!-- ═════════════════════════════════════════════════════════════════════
-
-     SUBMISSION CHECKLIST — unit 5
-
-       [ ] criteria.md has five numbered criteria, each naming a NUMBER
-       [ ] Each has a reason underneath tied to your data or taxonomy
-       [ ] labels.csv: at least 150 rows, text/label/note, ONE file not split
-       [ ] No label above 70%
-       [ ] All five unit 5 sections have real content
-       [ ] Label Taxonomy includes the decision rule for your hardest boundary
-       [ ] The Dataset includes three hard cases
-       [ ] results.json and test_split.csv committed (the notebook does this)
-       [ ] At least four new commits
-       [ ] Repository URL submitted — WRITE IT DOWN
-
-     SUBMISSION CHECKLIST — unit 6
-
-       [ ] Baseline vs. Trained table, with your prediction written beforehand
-       [ ] Run Log — Before, five criteria across three seeds
-       [ ] Confusion matrix TYPED AS A MARKDOWN TABLE
-       [ ] A verdict on every criterion
-       [ ] A diagnosis for every miss, using the agreement report as evidence
-       [ ] Agreement Report with every disagreement adjudicated
-       [ ] One improvement, with Run Log — After
-       [ ] What's Still Broken
-       [ ] results_three_seeds_before.json, results_three_seeds_after.json,
-           baseline_results.json and
-           agreement_results.json committed
-       [ ] At least four new commits
-       [ ] The SAME repository URL as last unit
-
-     Do not delete and recreate this repository.
-     ═════════════════════════════════════════════════════════════════════ -->
-
----
-
-📖 **How to run this project: [RUNNING.md](RUNNING.md)**
+The five numerical targets are fixed in [criteria.md](criteria.md). No stretch features are claimed. Unit 6 work remains pending.
