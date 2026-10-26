@@ -1,143 +1,30 @@
-# Acceptance criteria — TakeMeter
+# Acceptance criteria — Sports TakeMeter
 
-Five criteria that say what "working" means for this classifier, written in
-unit 5 **before** anything was trained.
+Recorded before training on the Sports Stack Exchange dataset. An earlier starter-practice run existed before this project; its scores were not used to set these targets. These targets apply to the sports dataset and its held-out evaluation, not to the unrelated staff taxonomy. Unit 6 will evaluate model criteria for each of seeds 42, 7 and 2024; a model criterion is met only if it holds for all three seeds.
 
-**All five are yours this time.** None are given. You've had two projects of
-practice.
+1. **Overall accuracy: at least 0.75 on the held-out test set.**
+   With two categories, 0.50 is the uniform-guessing baseline. Three correct answers out of four would make sorting sports explanations useful while leaving room for genuinely ambiguous attribution and late citations truncated by the model.
 
-An acceptance criterion names a number. *"The model is accurate"* is an
-opinion. *"Every label has an F1 of at least 0.60 on the held-out set"* is a
-criterion.
+2. **Per-label F1: at least 0.65 for both sourced and uncited on the held-out test set.**
+   Both finding citations and identifying their absence matter. This prevents a good overall score from hiding a model that mostly predicts the larger class; 0.65 allows mistakes among implicit rule references and concrete but unsupported statistics.
 
-Under each, write a sentence or two on **why that number**. A reason that says
-something about your data or your taxonomy earns credit — *"I picked 0.60 F1
-for `reaction` because it's my smallest label and I only have about 50
-examples of it"*. A reason that could be attached to any project does not.
+3. **Dataset balance: each label must occupy between 30% and 70%, inclusive, of at least 200 distinct nonempty answers.**
+   A minimum of 60 examples per label gives the default split about nine test examples per category. This is still small, but makes class-level evaluation possible and enforces the course's majority cap.
 
-> Missing your own targets next unit costs you nothing. Setting a target so
-> easy you can't miss it does.
+4. **Sourced precision: at least 0.80 on the held-out test set; predicting no sourced answers fails.**
+   A false sourced label incorrectly implies that supporting material is present. At least four in five of those predictions should be correct for a reader using the classifier to find attributed explanations.
 
----
+5. **Confidence: accuracy in the most-confident test third must be at least 0.80 and at least 0.10 greater than accuracy in the least-confident third.**
+   Confidence should help decide which predictions deserve checking first. The notebook ranks maximum softmax probability and uses floor(n_test/3) examples at each end; for 30 test examples this compares 10 against 10, so a ten-point difference is one additional correct prediction.
 
-## Pick numbers you can defend
+These cover overall accuracy, per-label performance, balance, and confidence. Targets are frozen rather than adjusted to the observed scores.
 
-Not numbers that sound impressive. Three labels means a coin-flip guesser gets
-about 33%, so a target of 0.40 is barely a target. Your number should sit
-somewhere you'd honestly call useful.
+## Pre-training target review
 
-**Cover at least three of these five areas.** They're here as prompts, not as a
-form to fill in — a criterion that fits none of them is fine if it names a
-number.
-
-| Area | A question it could answer |
-|---|---|
-| Overall accuracy | How often does it need to be right to be worth using? |
-| Per-label performance | Is one label allowed to be much worse than the others? |
-| Balance | How lopsided can your label counts get before it's a problem? |
-| Consistency | If someone else labelled the same posts, how often should you agree? |
-| Confidence | Should a confident prediction be right more often than an unsure one? |
-
-Two things worth knowing before you pick numbers, because both will affect
-whether you hit them:
-
-- **Your smallest label will have the jumpiest score.** If a label has 50
-  examples, about 8 land in the test split. An F1 computed on 8 examples moves
-  a lot between seeds. A target for that label should be looser than one for
-  your biggest label, and saying so is a good reason.
-- **Unit 6 tests across three seeds, and the target has to hold across all
-  three.** A target of 0.65 against results of 0.71, 0.62, 0.68 is a **miss**.
-  Pick with that in mind — it is stricter than it first sounds.
-
----
-
-## 1.
-
-<!-- Your criterion. It must name a number. -->
-
-
-
-**Why this target:**
-
-
-
----
-
-## 2.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
-
----
-
-## 3.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
-
----
-
-## 4.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
-
----
-
-## 5.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
-
----
-
-<!-- ─────────────────────────────────────────────────────────────────────────
-     UNIT 6 — read this before you change anything above.
-
-     If a criterion turns out to be BROKEN rather than merely unmet, you can
-     revise it, and that earns credit. But never delete or edit the original
-     line. Add the revision underneath, like this:
-
-         ## 2. Every label performs acceptably
-
-         The model performs well on all labels.
-
-         **Why this target:** ...
-
-         > **Revised in unit 6:** Every label has an F1 of at least 0.60 on
-         > the held-out set.
-         >
-         > **Why revised:** "performs well" gave me nothing to check. I
-         > couldn't produce a verdict from it at all.
-
-     That's a revision because the criterion couldn't be MEASURED.
-
-     Lowering a target because you missed it is not a revision, and it costs
-     you the point:
-
-         ✗ "Overall accuracy of at least 0.65" → "at least 0.55", because
-            0.65 turned out to be optimistic for 200 examples.
-
-     A number you missed stays where it is, gets diagnosed, and gets a fix
-     attempted. That's where the points are.
-     ───────────────────────────────────────────────────────────────────────── -->
+| Criterion | Why it could be too easy | Why it could be too hard |
+|---|---|---|
+| 1 | Citation language is often explicit. | Long answers may place their evidence beyond 128 tokens. |
+| 2 | Two labels avoid a sparse reaction category. | A rule reference can be very short or implicit. |
+| 3 | This community regularly mixes cited and uncited answers. | Recent activity could be dominated by heavily sourced rule explanations. |
+| 4 | Named documents and quotations give strong cues. | Detailed unsupported claims can sound authoritative. |
+| 5 | Obvious links may produce easy, confident predictions. | With only ten examples per third, one error changes accuracy by ten points. |
