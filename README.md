@@ -187,3 +187,19 @@ Seed 42 reproduced the Unit 5 `results.json` to the digit on the same device.
 | **fan_take** | 4 | 0 | 0 |
 
 **Biggest confusion:** all 11 real `game_analysis` posts were called `rulebook` and none went the other way. The model never learned the game_analysis/rulebook boundary, or any boundary: it learned the class prior and nothing else.
+
+## Agreement Report
+
+**Rate: 30 / 30 = 100%** against the staff labels in [data/staff_labels.csv](data/staff_labels.csv), applying the definitions in [data/staff_taxonomy.md](data/staff_taxonomy.md). My labels, committed before the staff file was opened: [my_staff_labels.csv](my_staff_labels.csv). Output: [agreement_results.json](agreement_results.json).
+
+**Disagreements: none**, so there is nothing to sort into the loose / gap / ambiguous piles. Instead, these are the five posts where I thought a disagreement was most likely, and why the written rules settled each one:
+
+| Post | Both said | The competing label | Why the rule settles it |
+|---|---|---|---|
+| sp_014 "Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story…" | hot_take | analysis | Rule 1's own example. The 3% decorates a conclusion already reached ("obviously"); no reasoning connects the number to the cause. |
+| sp_005 "My times dropped 2% in the shoes and another 2% the following year in the same pair…" | analysis | hot_take / reaction | The second 2%, with shoes held constant, is the whole argument against "carbon plates are the whole story". The fact carries it, so rule 1 says analysis. It's about the writer, but rule 3 says evidence outranks personal framing. |
+| sp_007 "Ran the same loop in 4C and in 24C… 90 seconds slower in the heat" | analysis | reaction | Personal and recent, but it's a controlled comparison used to rebut a general claim ("heat costs you a bit"). Rule 3: a load-bearing fact beats immediacy. |
+| sp_021 "Four minutes off. FOUR. … grinning at nothing." | reaction | analysis | It contains a number, but the number argues nothing; it's what just happened to the writer. Rule 2 says reaction. |
+| sp_017 "Road racing peaked in about 2015 and everything since has been marketing." | hot_take | analysis | A date is not evidence. Nothing checkable supports "peaked", so it's a confident, general, unsupported claim. |
+
+**What 100% does and doesn't mean.** The staff set is close to separable once the rules are applied literally: each post has either a load-bearing number, a general claim with no support, or a first-person account of the last few hours. Every "ambiguous" post was ambiguous in a way a decision rule had already named. That means the staff rules are tight. It does not mean my sports taxonomy was applied as consistently. **Disclosure:** the 30 staff labels were drafted by Claude under the staff taxonomy, and I accepted them without changes. So this rate measures how a careful reader applies these written rules, not my own consistency as an annotator. As Milestone 4 evidence, it can't show a labelling problem in [labels.csv](labels.csv). It shows only that a three-rule decision procedure, applied in order, can produce full agreement, and my sports taxonomy uses the same kind of ordered procedure.
