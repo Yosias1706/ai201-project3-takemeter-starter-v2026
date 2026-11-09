@@ -158,3 +158,32 @@ Both models were scored on the same 30 held-out posts in [test_split.csv](test_s
 | Macro F1 | 0.128 | 0.300 | +0.172 |
 
 **Reading it.** The prediction held: the trained model's whole edge (+0.033 accuracy, one post) comes from `rulebook`, and the baseline wins on `game_analysis`. But the edge is hollow. The Unit 5 trained model predicted `rulebook` for all 30 posts, so its 0.500 accuracy is exactly the majority-class rate (15/30). A model that always guesses the commonest label ties a general model that has never seen a training example. Macro F1, which punishes ignoring labels, favours the baseline. Neither model found a single `fan_take`. The baseline took several seconds per post on MPS, against a fraction of a second for the trained model.
+
+## Run Log — Before
+
+**Device:** Apple Silicon GPU (MPS), PyTorch 2.14.1, Python 3.13.0, `distilbert-base-uncased`, 3 epochs, learning rate 2e-5, batch 16, 128 tokens. Seeds 42, 7 and 2024, each a fresh stratified 70/15/15 split (139 / 31 / 30) and a fresh model. Raw output: [results_three_seeds_before.json](results_three_seeds_before.json).
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.500 | 0.500 | 0.500 | 0.000 |
+| Macro F1 | 0.222 | 0.222 | 0.222 | 0.000 |
+| F1 — `rulebook` | 0.667 | 0.667 | 0.667 | 0.000 |
+| F1 — `game_analysis` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `fan_take` | 0.000 | 0.000 | 0.000 | 0.000 |
+| Precision — `rulebook` | 0.500 | 0.500 | 0.500 | 0.000 |
+| Most-confident third accuracy | 0.900 | 0.900 | 1.000 | 0.100 |
+| Least-confident third accuracy | 0.100 | 0.100 | 0.100 | 0.000 |
+
+Seed 42 reproduced the Unit 5 `results.json` to the digit on the same device.
+
+**The zero spread is not stability.** The notebook's note says "stable enough to trust", but every seed produced the same degenerate model: it predicts `rulebook` for every test post. Each stratified test split holds 15 / 11 / 4 posts, so a constant guess scores exactly 15/30 every time. The three trials do measure something real, though: the collapse is not a bad draw. It happens on every split.
+
+### Confusion matrix (seed 42; seeds 7 and 2024 are identical)
+
+| true \ predicted | rulebook | game_analysis | fan_take |
+|---|---|---|---|
+| **rulebook** | 15 | 0 | 0 |
+| **game_analysis** | 11 | 0 | 0 |
+| **fan_take** | 4 | 0 | 0 |
+
+**Biggest confusion:** all 11 real `game_analysis` posts were called `rulebook` and none went the other way. The model never learned the game_analysis/rulebook boundary, or any boundary: it learned the class prior and nothing else.
