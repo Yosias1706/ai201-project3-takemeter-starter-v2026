@@ -2,7 +2,7 @@
 
 Community: [Sports Stack Exchange](https://sports.stackexchange.com/), a public multi-sport discussion community. The unit of text is a complete answer, not a question title.
 
-This restarts the project with a new objective: distinguish **officiating and rules**, **sports facts and explanations**, and **personal takes and recommendations**. The old citation-presence experiment is superseded; its commits remain in history, and its scores are not evidence about this classifier.
+The objective is to distinguish **officiating and rules**, **sports facts and explanations**, and **personal takes and recommendations**.
 
 The initial reading sample is the first 35 answers in the frozen public API collection (30391 through 30290). Re-reading that sample for conversational purpose shows:
 

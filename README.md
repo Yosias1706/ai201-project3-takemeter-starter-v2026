@@ -4,7 +4,7 @@
 
 Sports conversations jump between “what's the call?”, “what happened?”, and “here's my take.” TakeMeter sorts complete answers from [Sports Stack Exchange](https://sports.stackexchange.com/) into **rulebook**, **game_analysis**, and **fan_take**. The distinction is what the writer is doing, not whether they pasted a link. It covers sports including basketball, football, cricket, baseball, tennis and hockey, and it does not certify that a post is correct.
 
-This version replaces the earlier two-label citation experiment. All 200 answers were re-annotated for the new task, new criteria were committed before training, and a fresh three-class model was trained. Earlier commits remain in the repository history. [Community notes](notes/community.md) record the reading sample and the distinctions observed in real posts.
+The criteria were committed before training the three-class model. [Community notes](notes/community.md) record the reading sample and the distinctions observed in real posts.
 
 Repository for both units: [Yosias1706/ai201-project3-takemeter-starter-v2026](https://github.com/Yosias1706/ai201-project3-takemeter-starter-v2026).
 
@@ -70,7 +70,7 @@ A quoted athlete's recommended drill is still a fan take; an uncited factual cla
 
 ## The Dataset
 
-**Source:** 200 complete public Sports Stack Exchange answers, retrieved from two pages of the public API in descending creation order on October 26, 2026 UTC. No login was required. The original answer bodies were retained for this restart and every label was reassigned from the new definitions; the old two-way labels were not mapped to the new ones.
+**Source:** 200 complete public Sports Stack Exchange answers, retrieved from two pages of the public API in descending creation order on October 26, 2026 UTC. No login was required. Each complete answer was classified using the three label definitions.
 
 **Annotation:** Read each complete answer for its main purpose, assign one label, then review mixed cases with the decision order. The note column records the public answer ID and rationale. This is not an unaided cold-labeling set. The single unsplit [labels.csv](labels.csv) is the notebook input; no split was performed during collection or labeling.
 
@@ -111,7 +111,7 @@ This is a recent-answer convenience sample, not a random sample of sports fans. 
 | Python | 3.13.0 |
 | PyTorch | 2.14.1 |
 
-Training hyperparameters remain at the starter defaults. Only the task's label map and dataset changed. This is a fresh model initialization and training run, not continued training of the earlier citation classifier.
+Training hyperparameters remain at the starter defaults. The model was initialized from the base checkpoint with a new three-class head.
 
 | Label | Train | Validation | Test |
 |---|---:|---:|---:|
@@ -124,10 +124,10 @@ The supplied 70/15/15 procedure produces 139/31/30 due to rounding in its second
 
 Notebook sections 1–5 completed. [results.json](results.json) contains the new three-class metrics and device information; [test_split.csv](test_split.csv) contains the matching held-out posts. The new [criteria.md](criteria.md) and re-labeled dataset were committed first. The results are kept as obtained, without adjusting criteria or picking a better seed afterward. The run does not save a standalone checkpoint; re-executing the notebook recreates the model in memory.
 
-The earlier environment check passed all ten checks. The notebook's data check accepted this dataset and warned about the small fan_take test set during splitting. Notebook sections 6–7 remain unexecuted. Baseline comparison, three-seed evaluation and criterion verdicts belong to Unit 6.
+The environment check passed all ten checks. The notebook's data check accepted this dataset and warned about the small fan_take test set during splitting. Notebook sections 6–7 remain unexecuted. Baseline comparison, three-seed evaluation and criterion verdicts belong to Unit 6.
 
 ## Reproducing the Project
 
-Follow [RUNNING.md](RUNNING.md), install the requirements in `.venv`, run `python test.py`, select that kernel, and execute sections 1–5 of [takemeter.ipynb](takemeter.ipynb). The committed CSV and notebook are sufficient; local collection, annotation and execution helpers are ignored and are not required to run training.
+Follow [RUNNING.md](RUNNING.md), install the requirements in `.venv`, run `python test.py`, select that kernel, and execute sections 1–5 of [takemeter.ipynb](takemeter.ipynb). The committed CSV and notebook are sufficient to run training.
 
 The new milestone commits document the reading, definitions, criteria, relabeling, training and final write-up in that order. No stretch features are claimed, and Unit 6 is still pending.

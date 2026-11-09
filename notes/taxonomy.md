@@ -1,6 +1,6 @@
 # Milestone 2 — Rulebook, Game Analysis, Fan Take
 
-This three-label taxonomy supersedes the citation-based taxonomy. Citations and tone do not determine the label. A sourced opinion can be a fan take; an uncited factual report can be game analysis.
+Citations and tone do not determine the label. A sourced opinion can be a fan take; an uncited factual report can be game analysis.
 
 ## rulebook
 

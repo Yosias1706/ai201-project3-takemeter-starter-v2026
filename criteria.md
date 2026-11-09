@@ -1,6 +1,6 @@
 # Acceptance criteria — three-way Sports TakeMeter
 
-These targets supersede the earlier citation-classifier targets. They are committed before the first training run using rulebook, game_analysis and fan_take. Earlier two-class scores are not results for this task. In Unit 6, each model criterion must hold for all three prescribed seeds (42, 7 and 2024), not only the best one.
+These targets were committed before the first training run using rulebook, game_analysis and fan_take. In Unit 6, each model criterion must hold for all three prescribed seeds (42, 7 and 2024), not only the best one.
 
 1. **Overall held-out accuracy must be at least 0.70.**
    Three equally likely guesses achieve about 0.33. Seven correct routing decisions in ten would make the classifier useful for separating officiating debates, sports explanations and personal takes, despite overlap between the latter two.
