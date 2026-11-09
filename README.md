@@ -124,13 +124,13 @@ The supplied 70/15/15 procedure produces 139/31/30 due to rounding in its second
 
 Notebook sections 1–5 completed. [results.json](results.json) contains the new three-class metrics and device information; [test_split.csv](test_split.csv) contains the matching held-out posts. The new [criteria.md](criteria.md) and re-labeled dataset were committed first. The results are kept as obtained, without adjusting criteria or picking a better seed afterward. The run does not save a standalone checkpoint; re-executing the notebook recreates the model in memory.
 
-The environment check passed all ten checks. The notebook's data check accepted this dataset and warned about the small fan_take test set during splitting. Notebook sections 6–7 remain unexecuted. Baseline comparison, three-seed evaluation and criterion verdicts belong to Unit 6.
+The environment check passed all ten checks. The notebook's data check accepted this dataset and warned about the small fan_take test set during splitting. At the end of Unit 5, notebook sections 6–7 had not been run. Unit 6 results are in the sections below.
 
 ## Reproducing the Project
 
 Follow [RUNNING.md](RUNNING.md), install the requirements in `.venv`, run `python test.py`, select that kernel, and execute sections 1–5 of [takemeter.ipynb](takemeter.ipynb). The committed CSV and notebook are sufficient to run training.
 
-The new milestone commits document the reading, definitions, criteria, relabeling, training and final write-up in that order. No stretch features are claimed, and Unit 6 is still pending.
+The new milestone commits document the reading, definitions, criteria, relabeling, training and final write-up in that order. No stretch features are claimed in either unit. **Note for reproducing:** the notebook now has `EPOCHS = 10` (the Unit 6 improvement). Set it back to 3 and `RUN_LABEL = "before"` to reproduce the before-run; leave it at 10 with `RUN_LABEL = "after"` to reproduce the after-run.
 
 ---
 
@@ -296,3 +296,22 @@ Seed 7 meets criterion 5 by exactly the margin: 9/10 against 8/10, one post. One
 **Did it help? Yes.** One change moved two criteria from MISSED to MET, and the trained model now clearly beats the zero-shot baseline. On the seed-42 split, the same 30 posts in [test_split.csv](test_split.csv), it scores 0.833 accuracy against 0.467 and 0.593 macro F1 against 0.300. That confirms the diagnosis: the before-model was undertrained, not unable to learn the task.
 
 **What it didn't fix:** `fan_take`. Across the three seeds the model predicted `fan_take` only 0, 1 and 1 times. When it does, it's right (precision 1.00), but it finds at most 1 of the 4 real ones. The real `fan_take` posts leak in both directions, 4 to `rulebook` and 6 to `game_analysis` summed over the seeds. Accuracy also now swings exactly 10 points across seeds (0.767–0.867), right at the notebook's instability line, driven by `game_analysis` (F1 spread 0.19) and `fan_take` (0.40).
+
+## What's Still Broken
+
+**Criterion 2 (every label F1 ≥ 0.60) is still missed, because of `fan_take`** (F1 0.000 / 0.400 / 0.400).
+
+- **What I'd do next:** add examples to the thinnest label, about 30 more `fan_take` answers labelled under the same decision rule. That's the second improvement the course lists, and the evidence points at it. `fan_take` has 21 training examples per split against 69 `rulebook`, and the 10-epoch model almost never predicts it, which is what a model does with a label it has seen too little of to risk guessing. Once that's done, I'd re-check the `game_analysis`/`fan_take` boundary: 6 of the 10 `fan_take` misses went to `game_analysis`, and that's the boundary I named as hardest in Unit 5. If more data doesn't fix it, my own labels on that boundary are the next suspect. Advice that cites a mechanism (a cricket-bat sizing tip, a training routine) is exactly the kind of answer I may have labelled both ways.
+- **Why I stopped:** the unit allows exactly one change, and I used it on epochs because the diagnosis pointed at training first. Changing the data as well would have mixed two effects into one before/after comparison.
+- **Measurement problem I can't fix by training:** each test split has only 4 `fan_take` posts, so its F1 can take only a handful of values and one post moves recall by 25 points. Even a model that really reached 0.60 could miss on a given seed. A larger `fan_take` pool would fix the measurement as well as the model.
+
+**Criterion 5 passes, but narrowly** (seed 7 by exactly one post), and as written it can't tell a degenerate model from a useful one (it was MET before the fix too). I'd keep it and add a companion, for example "and the model predicts every label at least once", in a future unit. I'm not revising it here, because it was measurable and wasn't missed.
+
+**The gap between what I meant and what the model learned.** I meant `fan_take` to capture the writer's *purpose* (recommending, judging, predicting), but the after-run matrices show the model learned something closer to *surface register*. Posts that sound technical go to `game_analysis` and posts that mention rules go to `rulebook`, even when their main conclusion is advice. The model sorts `rulebook` and `game_analysis` almost perfectly by vocabulary. The purpose-based distinction that defines `fan_take` is the part it didn't learn, which is unsurprising, since that distinction lives in the conclusion and not in the words, and my 128-token limit can cut the conclusion off.
+
+## How I Used AI
+
+- **Unit 6 execution:** Claude (in VS Code) ran `baseline.py` (with definitions, and with bare label names), ran notebook sections 6–7 headless from the notebook's own cell code, made the single `EPOCHS` edit and `RUN_LABEL` change, and drafted these README sections from the JSON outputs. I reviewed the numbers against the committed JSON files.
+- **Staff labels:** Claude drafted all 30 labels in [my_staff_labels.csv](my_staff_labels.csv) under the staff taxonomy, and I accepted them unchanged. They were committed before the staff labels were opened. This is disclosed in the Agreement Report because it limits what the 100% rate says about my own annotation consistency.
+- **Spotting error patterns:** Claude pointed out that the before-model's final training loss (about 0.97) sat on the entropy of my label distribution (1.00). That turned "the model is bad" into the specific diagnosis "the model only learned the class prior", which chose the improvement. It also flagged that the before-run's zero seed spread was a constant predictor, not stability, and that criterion 5 passes even for a degenerate model.
+- **Decisions that stayed mine:** the labels, taxonomy and criteria from Unit 5 are unchanged. The verdicts follow the "must hold on all three seeds" rule committed in [criteria.md](criteria.md) before training.
