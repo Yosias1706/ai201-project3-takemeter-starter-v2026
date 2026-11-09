@@ -1,0 +1,164 @@
+[
+  {
+    "seed": 42,
+    "n_test": 30,
+    "accuracy": 0.8333333333333334,
+    "f1_macro": 0.5928853754940712,
+    "per_label": {
+      "rulebook": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091,
+        "support": 15
+      },
+      "game_analysis": {
+        "precision": 0.8333333333333334,
+        "recall": 0.9090909090909091,
+        "f1": 0.8695652173913043,
+        "support": 11
+      },
+      "fan_take": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 4
+      }
+    },
+    "confusion": {
+      "rulebook": {
+        "rulebook": 15,
+        "game_analysis": 0,
+        "fan_take": 0
+      },
+      "game_analysis": {
+        "rulebook": 1,
+        "game_analysis": 10,
+        "fan_take": 0
+      },
+      "fan_take": {
+        "rulebook": 2,
+        "game_analysis": 2,
+        "fan_take": 0
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.7596821784973145,
+      "mean_when_wrong": 0.6283754110336304,
+      "accuracy_most_confident_third": 1.0,
+      "accuracy_least_confident_third": 0.8,
+      "n_per_third": 10
+    },
+    "device": "mps",
+    "device_name": "Apple Silicon GPU (MPS)",
+    "torch_version": "2.14.1",
+    "max_length": 128
+  },
+  {
+    "seed": 7,
+    "n_test": 30,
+    "accuracy": 0.8666666666666667,
+    "f1_macro": 0.7393939393939394,
+    "per_label": {
+      "rulebook": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091,
+        "support": 15
+      },
+      "game_analysis": {
+        "precision": 0.9090909090909091,
+        "recall": 0.9090909090909091,
+        "f1": 0.9090909090909091,
+        "support": 11
+      },
+      "fan_take": {
+        "precision": 1.0,
+        "recall": 0.25,
+        "f1": 0.4,
+        "support": 4
+      }
+    },
+    "confusion": {
+      "rulebook": {
+        "rulebook": 15,
+        "game_analysis": 0,
+        "fan_take": 0
+      },
+      "game_analysis": {
+        "rulebook": 1,
+        "game_analysis": 10,
+        "fan_take": 0
+      },
+      "fan_take": {
+        "rulebook": 2,
+        "game_analysis": 1,
+        "fan_take": 1
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.6987345814704895,
+      "mean_when_wrong": 0.6360259056091309,
+      "accuracy_most_confident_third": 0.9,
+      "accuracy_least_confident_third": 0.8,
+      "n_per_third": 10
+    },
+    "device": "mps",
+    "device_name": "Apple Silicon GPU (MPS)",
+    "torch_version": "2.14.1",
+    "max_length": 128
+  },
+  {
+    "seed": 2024,
+    "n_test": 30,
+    "accuracy": 0.7666666666666667,
+    "f1_macro": 0.6622222222222223,
+    "per_label": {
+      "rulebook": {
+        "precision": 0.8666666666666667,
+        "recall": 0.8666666666666667,
+        "f1": 0.8666666666666667,
+        "support": 15
+      },
+      "game_analysis": {
+        "precision": 0.6428571428571429,
+        "recall": 0.8181818181818182,
+        "f1": 0.72,
+        "support": 11
+      },
+      "fan_take": {
+        "precision": 1.0,
+        "recall": 0.25,
+        "f1": 0.4,
+        "support": 4
+      }
+    },
+    "confusion": {
+      "rulebook": {
+        "rulebook": 13,
+        "game_analysis": 2,
+        "fan_take": 0
+      },
+      "game_analysis": {
+        "rulebook": 2,
+        "game_analysis": 9,
+        "fan_take": 0
+      },
+      "fan_take": {
+        "rulebook": 0,
+        "game_analysis": 3,
+        "fan_take": 1
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.7432818412780762,
+      "mean_when_wrong": 0.5808054208755493,
+      "accuracy_most_confident_third": 1.0,
+      "accuracy_least_confident_third": 0.6,
+      "n_per_third": 10
+    },
+    "device": "mps",
+    "device_name": "Apple Silicon GPU (MPS)",
+    "torch_version": "2.14.1",
+    "max_length": 128
+  }
+]

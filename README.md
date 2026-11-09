@@ -232,3 +232,67 @@ Targets from [criteria.md](criteria.md), committed before any training. As that 
 - **Contributing, for criterion 2 specifically:** `fan_take` has 21 training and 4 test examples per split. Even a working model will have a jumpy `fan_take` F1, since one test post moves recall by 25 points.
 
 **Improvement this points at:** a training setting. The diagnosis names undertraining, so I'll change one thing, the number of epochs, and leave labels, taxonomy and criteria as they are.
+
+## The Improvement
+
+**What I changed:** `EPOCHS` from 3 to 10 in notebook section 2. Nothing else: same [labels.csv](labels.csv), same taxonomy, same criteria, same seeds (42, 7, 2024), same learning rate, batch size, token limit and device (MPS).
+
+**Why:** the diagnosis above found the model stuck at the class prior. Training loss was about 0.97 against a prior entropy of 1.00, after only 27 optimizer steps. More epochs is the most direct test of "undertrained": 10 epochs gives about 90 steps. I picked 10 once, before running, and didn't try other values, so the test set wasn't used to tune it. Final training loss fell to 0.61 / 0.68 / 0.62.
+
+Raw output: [results_three_seeds_after.json](results_three_seeds_after.json).
+
+### Run Log — After
+
+| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
+|---|---|---|---|---|---|
+| 1. Overall accuracy | ≥ 0.70 | 0.833 | 0.867 | 0.767 | MET |
+| 2. Every label F1 (min shown) | ≥ 0.60 each | 0.000 (`fan_take`) | 0.400 (`fan_take`) | 0.400 (`fan_take`) | MISSED |
+| 3. Dataset: ≥200 distinct posts, ≥25 per label, no label >60% | all three | 200 / 30 min / 49.5% | same | same | MET |
+| 4. Precision on `rulebook` (and >0 predictions) | ≥ 0.80 | 0.833 | 0.833 | 0.867 | MET |
+| 5. Most-confident third accuracy ≥0.80 **and** ≥0.10 above least-confident | both | 1.00 vs 0.80 | 0.90 vs 0.80 | 1.00 vs 0.60 | MET |
+
+Seed 7 meets criterion 5 by exactly the margin: 9/10 against 8/10, one post. One more confident mistake and it fails. I'm calling it MET because the target says "at least 0.10", but it's the narrowest pass in the table.
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.833 | 0.867 | 0.767 | 0.100 |
+| Macro F1 | 0.593 | 0.739 | 0.662 | 0.147 |
+| F1 — `rulebook` | 0.909 | 0.909 | 0.867 | 0.042 |
+| F1 — `game_analysis` | 0.870 | 0.909 | 0.720 | 0.189 |
+| F1 — `fan_take` | 0.000 | 0.400 | 0.400 | 0.400 |
+
+### Before and after, side by side
+
+| Criterion | Before (seeds 42 / 7 / 2024) | Verdict | After (seeds 42 / 7 / 2024) | Verdict |
+|---|---|---|---|---|
+| 1. Accuracy ≥ 0.70 | 0.500 / 0.500 / 0.500 | MISSED | 0.833 / 0.867 / 0.767 | MET |
+| 2. Every label F1 ≥ 0.60 | 0.000 / 0.000 / 0.000 | MISSED | 0.000 / 0.400 / 0.400 | MISSED |
+| 3. Dataset balance | met | MET | met | MET |
+| 4. `rulebook` precision ≥ 0.80 | 0.500 / 0.500 / 0.500 | MISSED | 0.833 / 0.833 / 0.867 | MET |
+| 5. Confidence separation | 0.90–0.10 / 0.90–0.10 / 1.00–0.10 | MET | 1.00–0.80 / 0.90–0.80 / 1.00–0.60 | MET |
+
+### Confusion matrices — After
+
+| Seed 42 | rulebook | game_analysis | fan_take |
+|---|---|---|---|
+| **rulebook** | 15 | 0 | 0 |
+| **game_analysis** | 1 | 10 | 0 |
+| **fan_take** | 2 | 2 | 0 |
+
+| Seed 7 | rulebook | game_analysis | fan_take |
+|---|---|---|---|
+| **rulebook** | 15 | 0 | 0 |
+| **game_analysis** | 1 | 10 | 0 |
+| **fan_take** | 2 | 1 | 1 |
+
+| Seed 2024 | rulebook | game_analysis | fan_take |
+|---|---|---|---|
+| **rulebook** | 13 | 2 | 0 |
+| **game_analysis** | 2 | 9 | 0 |
+| **fan_take** | 0 | 3 | 1 |
+
+(Rows are true labels, columns are predictions.)
+
+**Did it help? Yes.** One change moved two criteria from MISSED to MET, and the trained model now clearly beats the zero-shot baseline. On the seed-42 split, the same 30 posts in [test_split.csv](test_split.csv), it scores 0.833 accuracy against 0.467 and 0.593 macro F1 against 0.300. That confirms the diagnosis: the before-model was undertrained, not unable to learn the task.
+
+**What it didn't fix:** `fan_take`. Across the three seeds the model predicted `fan_take` only 0, 1 and 1 times. When it does, it's right (precision 1.00), but it finds at most 1 of the 4 real ones. The real `fan_take` posts leak in both directions, 4 to `rulebook` and 6 to `game_analysis` summed over the seeds. Accuracy also now swings exactly 10 points across seeds (0.767–0.867), right at the notebook's instability line, driven by `game_analysis` (F1 spread 0.19) and `fan_take` (0.40).
