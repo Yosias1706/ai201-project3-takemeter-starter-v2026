@@ -203,3 +203,32 @@ Seed 42 reproduced the Unit 5 `results.json` to the digit on the same device.
 | sp_017 "Road racing peaked in about 2015 and everything since has been marketing." | hot_take | analysis | A date is not evidence. Nothing checkable supports "peaked", so it's a confident, general, unsupported claim. |
 
 **What 100% does and doesn't mean.** The staff set is close to separable once the rules are applied literally: each post has either a load-bearing number, a general claim with no support, or a first-person account of the last few hours. Every "ambiguous" post was ambiguous in a way a decision rule had already named. That means the staff rules are tight. It does not mean my sports taxonomy was applied as consistently. **Disclosure:** the 30 staff labels were drafted by Claude under the staff taxonomy, and I accepted them without changes. So this rate measures how a careful reader applies these written rules, not my own consistency as an annotator. As Milestone 4 evidence, it can't show a labelling problem in [labels.csv](labels.csv). It shows only that a three-rule decision procedure, applied in order, can produce full agreement, and my sports taxonomy uses the same kind of ordered procedure.
+
+## Verdicts and Diagnoses
+
+Targets from [criteria.md](criteria.md), committed before any training. As that file says, a model criterion must hold on **all three** seeds.
+
+| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
+|---|---|---|---|---|---|
+| 1. Overall accuracy | ≥ 0.70 | 0.500 | 0.500 | 0.500 | MISSED |
+| 2. Every label F1 (min shown) | ≥ 0.60 each | 0.000 | 0.000 | 0.000 | MISSED |
+| 3. Dataset: ≥200 distinct posts, ≥25 per label, no label >60% | all three | 200 / 30 min / 49.5% | same | same | MET |
+| 4. Precision on `rulebook` (and >0 predictions) | ≥ 0.80 | 0.500 | 0.500 | 0.500 | MISSED |
+| 5. Most-confident third accuracy ≥0.80 **and** ≥0.10 above least-confident | both | 0.90 vs 0.10 | 0.90 vs 0.10 | 1.00 vs 0.10 | MET |
+
+**How each was decided.**
+
+1. **MISSED.** 0.500 on every seed, 20 points under target. No generous reading is possible.
+2. **MISSED.** `rulebook` F1 is 0.667, but `game_analysis` and `fan_take` are 0.000 on every seed.
+3. **MET.** A property of [labels.csv](labels.csv), not of a split, so it is identical across seeds: 200 distinct nonempty posts, `fan_take` is the smallest label with 30, and `rulebook` is the largest at 49.5%.
+4. **MISSED.** The model made 30 `rulebook` predictions (so it doesn't trip the zero-prediction clause), but only 15 were right: 0.500, the base rate.
+5. **MET, as written.** Both conditions hold on all three seeds. I checked the argument against it: with a model that always says `rulebook`, "confidence" only ranks how rulebook-like a post looks, so the confident third is right because the obviously-about-rules posts really are `rulebook`. That is real signal (the model's confidence does separate rulebook posts from the rest), but it isn't triage across all three labels, which was the intent. I'm keeping MET because the criterion is measurable and the numbers clear it. Its weakness is that it doesn't guard against a degenerate model. That's a gap in the criterion's coverage, not a reason to rewrite it, so criteria.md is unchanged.
+
+**Diagnosis: one cause behind all three misses. The model never trained past the class prior.**
+
+- **What I see:** on all three seeds and splits the model outputs `rulebook` for 30/30 posts (confusion matrix above). Validation accuracy was flat at the majority rate after epochs 1, 2 and 3.
+- **How I know it's training and not the task:** the final training loss was about 0.97 and validation loss about 0.88–0.99. The entropy of my label distribution (49.5 / 35.5 / 15) is 1.00. A model that has learned *only* how common each label is scores exactly that. With 139 training posts, batch 16 and 3 epochs, the model got 27 optimizer steps at learning rate 2e-5, which is not enough to move a freshly initialised classification head off the prior. The zero-shot baseline reaches 0.467 accuracy and nonzero `game_analysis` F1 from the definitions alone, so the distinctions are learnable from text. The trained model simply hasn't started.
+- **Why I don't think it's my labels (yet):** inconsistent labelling on a boundary shows up as errors running both ways across that pair. Here nothing is predicted as `game_analysis` or `fan_take` at all, which is an optimisation symptom, not a boundary symptom. The agreement check can't confirm this either way. It came out 30/30, and (see the disclosure above) it measures the staff rules more than my own annotation habits. Once the model trains properly, the game_analysis/fan_take boundary is where I'd expect labelling inconsistency to appear, because that is the boundary I flagged as hardest in Unit 5.
+- **Contributing, for criterion 2 specifically:** `fan_take` has 21 training and 4 test examples per split. Even a working model will have a jumpy `fan_take` F1, since one test post moves recall by 25 points.
+
+**Improvement this points at:** a training setting. The diagnosis names undertraining, so I'll change one thing, the number of epochs, and leave labels, taxonomy and criteria as they are.
