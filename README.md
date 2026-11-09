@@ -131,3 +131,30 @@ The environment check passed all ten checks. The notebook's data check accepted 
 Follow [RUNNING.md](RUNNING.md), install the requirements in `.venv`, run `python test.py`, select that kernel, and execute sections 1–5 of [takemeter.ipynb](takemeter.ipynb). The committed CSV and notebook are sufficient to run training.
 
 The new milestone commits document the reading, definitions, criteria, relabeling, training and final write-up in that order. No stretch features are claimed, and Unit 6 is still pending.
+
+---
+
+## Baseline vs. Trained
+
+**Expectation recorded before running the baseline:** The zero-shot model may distinguish factual explanations and personal recommendations better than the small fine-tuned model, whose Unit 5 run predicted only rulebook. Rule-related language should be the easiest category for both. This expectation was written before baseline evaluation, but after the Unit 5 scores had already been viewed; it is not a blind prediction of those known scores.
+
+**Prediction (one sentence):** The trained model will beat the baseline only on `rulebook`, because rule vocabulary is the one signal 139 training posts can teach it, while the zero-shot model will do better on `game_analysis` because it can read the definition rather than needing examples.
+
+Both models were scored on the same 30 held-out posts in [test_split.csv](test_split.csv) (seed 42 split from Unit 5). The baseline is `facebook/bart-large-mnli`, zero-shot, prompted with the three definitions in [label_definitions.txt](label_definitions.txt). Results: [baseline_results.json](baseline_results.json).
+
+| Measure | Baseline | Trained | Difference |
+|---|---|---|---|
+| Overall accuracy | 0.467 | 0.500 | +0.033 |
+| Macro F1 | 0.300 | 0.222 | -0.078 |
+| F1 — `fan_take` | 0.000 | 0.000 | +0.000 |
+| F1 — `game_analysis` | 0.286 | 0.000 | -0.286 |
+| F1 — `rulebook` | 0.615 | 0.667 | +0.051 |
+
+**What the definitions were worth.** I also ran the baseline with no definitions file, so it saw only the bare label names ([baseline_results_bare_names.json](baseline_results_bare_names.json)). The reported baseline above is the definitions run.
+
+| Measure | Bare names | With definitions | Gain from definitions |
+|---|---|---|---|
+| Overall accuracy | 0.167 | 0.467 | +0.300 |
+| Macro F1 | 0.128 | 0.300 | +0.172 |
+
+**Reading it.** The prediction held: the trained model's whole edge (+0.033 accuracy, one post) comes from `rulebook`, and the baseline wins on `game_analysis`. But the edge is hollow. The Unit 5 trained model predicted `rulebook` for all 30 posts, so its 0.500 accuracy is exactly the majority-class rate (15/30). A model that always guesses the commonest label ties a general model that has never seen a training example. Macro F1, which punishes ignoring labels, favours the baseline. Neither model found a single `fan_take`. The baseline took several seconds per post on MPS, against a fraction of a second for the trained model.
